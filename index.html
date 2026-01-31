@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Will you be my Valentine?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #f7cfd8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: #fff;
+      width: 340px;
+      padding: 30px 24px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .icon {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 10px 0 20px;
+      color: #222;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    button {
+      border: none;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+
+    .yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    .no {
+      background: #eee;
+      color: #444;
+      position: relative;
+    }
+
+    .yes:hover {
+      transform: scale(1.05);
+    }
+
+    .note {
+      font-size: 11px;
+      color: #777;
+      margin-top: 14px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+   
+    img {
+        width: 100%;
+        max-width: 200px;
+        height: auto;
+        margin-top: 16px;
+        border-radius: 12px;
+    }
+    .fade-in {
+  animation: fadeIn 0.8s ease forwards;
+    }
+
+        @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="card" id="card">
+    <div class="icon">🐱💗</div>
+    <h1>Alice will you be my valentine?</h1>
+
+    <div class="buttons">
+      <button class="yes" onclick="yesClicked()">Yes</button>
+      <button class="no" onmouseover="moveNo()">No</button>
+    </div>
+
+    <div class="note">“No” seems a bit shy 😈</div>
+  </div>
+
+    <audio id="bg-music" src="audio/perfect.mp3" loop></audio>
+
+  <script>
+    function moveNo() {
+      const btn = document.querySelector('.no');
+      const x = Math.random() * 120 - 60;
+      const y = Math.random() * 60 - 30;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    function yesClicked() {
+      const card = document.getElementById('card');
+      card.innerHTML = `
+        <div class="icon">🐱💗</div>
+        <h1>Alice will you be my valentine?</h1>
+        <h1>YAY! 🎉</h1>
+        <img src="img/1.jpg" alt="celebration" class="fade-in" />
+
+      `;
+        //play background music
+        const music =
+        document.getElementById('bg-music');
+        music.volume = 0.3; //soft volume
+        music.play();
+    }
+  </script>
+</body>
+</html>
